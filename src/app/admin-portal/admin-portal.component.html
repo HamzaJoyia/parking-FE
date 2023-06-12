@@ -1,0 +1,50 @@
+<h2>Admin Portal</h2>
+
+<!-- You can Add slot from here-->
+<form (ngSubmit)="addSlot()">
+  <label for="date">Date:</label>
+  <input type="date" id="date" [(ngModel)]="newSlot.date" required>
+
+  <label for="time">Time:</label>
+  <input type="time" id="time" [(ngModel)]="newSlot.time" required>
+
+  <button type="submit">Add Slot</button>
+</form>
+
+<!-- here all existing slots -->
+<div *ngIf="slots.length > 0">
+  <h3>Existing Slots:</h3>
+  <ul>
+    <li *ngFor="let slot of slots">
+      <div>Date: {{ slot.date }}</div>
+      <div>Time: {{ slot.time }}</div>
+      <button type="button" (click)="deleteSlot(slot)">Delete</button>
+    </li>
+  </ul>
+</div>
+
+<!-- here all existing reservations -->
+<div *ngIf="reservations.length > 0">
+  <h3>Existing Reservations:</h3>
+  <ul>
+    <li *ngFor="let reservation of reservations">
+      <div>ID: {{ reservation.id }}</div>
+      <div>Customer Name: {{ reservation.customerName }}</div>
+      <div>Date: {{ reservation.date }}</div>
+      <div>Time: {{ reservation.time }}</div>
+      <button type="button" (click)="deleteReservation(reservation)">Delete</button>
+    </li>
+  </ul>
+</div>
+
+<!-- Existing Customers -->
+<div *ngIf="customers.length > 0">
+  <h3>Existing Customers:</h3>
+  <ul>
+    <li *ngFor="let customer of customers">
+      <div>ID: {{ customer.id }}</div>
+      <div>Name: {{ customer.name }}</div>
+      <div>Email: {{ customer.email }}</div>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,42 @@
+<h2>Customer Portal</h2>
+
+<!-- to check slots -->
+<form [formGroup]="slotForm">
+  <label for="date">Date:</label>
+  <input type="date" id="date" formControlName="date">
+  
+  <label for="time">Time:</label>
+  <input type="time" id="time" formControlName="time">
+  
+  <button type="button" (click)="searchSlots()">Search Slots</button>
+</form>
+
+<!--mentioned all available slots -->
+<div *ngIf="slots.length > 0">
+  <h3>Available Slots:</h3>
+  <ul>
+    <li *ngFor="let slot of slots">
+      <div>Date: {{ slot.date }}</div>
+      <div>Time: {{ slot.time }}</div>
+      <button type="button" (click)="reserveSlot(slot)">Reserve</button>
+    </li>
+  </ul>
+</div>
+
+<!-- for error when no slots -->
+<div *ngIf="slots.length === 0">
+  <p>No slots available for the selected date and time.</p>
+</div>
+
+
+<!-- Selected Slots -->
+<div *ngIf="selectedSlots.length > 0">
+    <h3>Selected Slots:</h3>
+    <ul>
+      <li *ngFor="let slot of selectedSlots">
+        <div>Date: {{ slot.date }}</div>
+        <div>Time: {{ slot.time }}</div>
+      </li>
+    </ul>
+  </div>
+  
